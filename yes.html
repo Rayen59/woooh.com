@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Statistics</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {packages: ['corechart', 'line']});
+        google.charts.setOnLoadCallback(drawCharts);
+
+        function drawCharts() {
+            drawPieChart();
+            drawPercentageLineChart();
+            drawInstallationsLineChart();
+        }
+
+        function drawPieChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Country', 'Percentage'],
+                ['Tunisia', 30],
+                ['Morocco', 12.96],
+                ['Algeria', 12.96],
+                ['United States of America', 20],
+                ['Japan', 3.70],
+                ['Yemen', 7],
+                ['United Kingdom', 3.70],
+                ['Norway', 3],
+                ['Syrian Arab Republic', 3],
+                ['Italy', 5],
+                ['France', 35]
+            ]);
+
+            var options = {
+                title: 'Site Statistics by Country',
+                pieHole: 0.4,
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+            chart.draw(data, options);
+        }
+
+        function drawPercentageLineChart() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Month');
+            data.addColumn('number', 'Tunisia');
+            data.addColumn('number', 'Morocco');
+            data.addColumn('number', 'Algeria');
+            data.addColumn('number', 'USA');
+            data.addColumn('number', 'Japan');
+            data.addColumn('number', 'Yemen');
+            data.addColumn('number', 'UK');
+            data.addColumn('number', 'Norway');
+            data.addColumn('number', 'Syria');
+            data.addColumn('number', 'Italy');
+            data.addColumn('number', 'France');
+
+            data.addRows([
+                ['Jan', 30, 12.96, 12.96, 20, 3.70, 7, 3.70, 3, 3, 5, 35],
+                ['Feb', 32, 13, 13, 22, 4, 8, 4, 4, 4, 6, 36],
+                ['Mar', 33, 14, 14, 23, 4.5, 9, 4.5, 4.5, 4.5, 6.5, 37],
+                // Add more monthly data as needed
+            ]);
+
+            var options = {
+                chart: {
+                    title: 'Monthly Site Statistics (Percentage)',
+                },
+                width: 900,
+                height: 500,
+                hAxis: {
+                    title: 'Month'
+                },
+                vAxis: {
+                    title: 'Percentage'
+                }
+            };
+
+            var chart = new google.visualization.LineChart(document.getElementById('percentage-linechart'));
+            chart.draw(data, options);
+        }
+
+        function drawInstallationsLineChart() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Month');
+            data.addColumn('number', 'Tunisia');
+            data.addColumn('number', 'Morocco');
+            data.addColumn('number', 'Algeria');
+            data.addColumn('number', 'USA');
+            data.addColumn('number', 'Japan');
+            data.addColumn('number', 'Yemen');
+            data.addColumn('number', 'UK');
+            data.addColumn('number', 'Norway');
+            data.addColumn('number', 'Syria');
+            data.addColumn('number', 'Italy');
+            data.addColumn('number', 'France');
+
+            data.addRows([
+                ['Jan', 1068, 462, 462, 712, 132, 250, 132, 107, 107, 178, 1246],
+                ['Feb', 1139, 462, 462, 785, 143, 286, 143, 143, 143, 214, 1282],
+                ['Mar', 1175, 500, 500, 820, 160, 320, 160, 160, 160, 231, 1309],
+                // Add more monthly data as needed
+            ]);
+
+            var options = {
+                chart: {
+                    title: 'Monthly Site Statistics (Installations)',
+                },
+                width: 900,
+                height: 500,
+                hAxis: {
+                    title: 'Month'
+                },
+                vAxis: {
+                    title: 'Number of Installations'
+                }
+            };
+
+            var chart = new google.visualization.LineChart(document.getElementById('installations-linechart'));
+            chart.draw(data, options);
+        }
+    </script>
+    <style>
+        .button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #3f51b5;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <a href="drive.html" class="button">More Information About Our Services</a>
+
+    <h1>Site Statistics</h1>
+    <h2>Celebrating the First Anniversary of the Mathematics Website Founded by Mohamed Rayan Bouazizi</h2>
+    <div>
+        <span style="font-size: 24px;">
+            ★★★★☆ (4/5)
+        </span>
+    </div>
+    <div id="donutchart" style="width: 900px; height: 500px;"></div>
+    <div id="percentage-linechart" style="width: 900px; height: 500px;"></div>
+    <div id="installations-linechart" style="width: 900px; height: 500px;"></div>
+    <footer style="margin-top: 20px; text-align: center;">
+        <p>Thank you for your trust. We promise you prettier and more developed versions!</p>
+    </footer>
+</body>
+</html>
